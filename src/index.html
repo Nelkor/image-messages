@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta
@@ -11,20 +11,23 @@
       minimum-scale=1.0"
   >
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Frontend</title>
+  <title>Image Messages</title>
+  <!--suppress HtmlUnknownTarget -->
   <link rel="icon" href="/favicon.svg">
 </head>
 <body>
 
-<div class="demo-app">
-  <h1>Frontend starter-app</h1>
-  <a
-    href="https://github.com/nelkor/create-layer/tree/main/src/layers/frontend"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    readme is here
-  </a>
+<div class="app">
+  <input type="file" accept="image/png" id="pattern-uploading">
+  <input type="file" accept="image/png" id="steganography-uploading">
+  <label>
+    <span>Текст</span>
+    <textarea></textarea>
+  </label>
+  <button id="write">Записать</button>
+  <button id="read">Прочитать</button>
+  <canvas id="pattern-image"></canvas>
+  <canvas id="steganography-image"></canvas>
 </div>
 
 </body>

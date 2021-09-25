@@ -5,8 +5,7 @@
     "test": "jest",
     "ts": "tsc --noemit",
     "lint": "eslint . --ext .ts --fix",
-    "format-json": "prettier **/*.json .*rc --write",
-    "format-scss": "prettier **/*.scss --write",
+    "format": "prettier **/*.scss **/*.json .*rc --write",
     "build": "webpack",
     "serve": "webpack serve"
   },
