@@ -4,6 +4,10 @@ const MAX_CODE = 117648
 const RADIX = 7
 const DIFFERENCE_LENGTH = 6
 
+export const VALUES_BY_PIXEL = 4
+
+export const PIXELS_FOR_LETTER = 6
+
 export const codeToDifference = (code: number): number[] =>
   code > MAX_CODE
     ? Array.from({ length: DIFFERENCE_LENGTH }, () => 0)
@@ -129,4 +133,57 @@ export const modifyRgbByDiff = (
       decUint8(data, start + 2)
       break
   }
+}
+
+export const diffByIndex = (
+  start: number,
+  patternData: Uint8ClampedArray,
+  resultData: Uint8ClampedArray
+): number[] => {
+  const difference: number[] = []
+
+  for (let i = 0; i < PIXELS_FOR_LETTER; i++) {
+    const indexOfLetter = start + i * VALUES_BY_PIXEL
+
+    const patternRgb = patternData.slice(indexOfLetter, indexOfLetter + 3)
+    const resultRbg = resultData.slice(indexOfLetter, indexOfLetter + 3)
+
+    const rDiff = resultRbg[0] - patternRgb[0]
+    const gDiff = resultRbg[1] - patternRgb[1]
+    const bDiff = resultRbg[2] - patternRgb[2]
+
+    if (rDiff == 0 && gDiff == 0 && bDiff == 0) {
+      difference.push(0)
+    }
+
+    if (rDiff == 1 || rDiff == -2) {
+      difference.push(1)
+    }
+
+    if (rDiff == -1 || rDiff == 2) {
+      difference.push(2)
+    }
+
+    if (gDiff == 1 || gDiff == -2) {
+      difference.push(3)
+    }
+
+    if (gDiff == -1 || gDiff == 2) {
+      difference.push(4)
+    }
+
+    if (bDiff == 1 || bDiff == -2) {
+      difference.push(5)
+    }
+
+    if (bDiff == -1 || bDiff == 2) {
+      difference.push(6)
+    }
+  }
+
+  if (difference.length != 6) {
+    throw new Error('images is not a valid pair')
+  }
+
+  return difference
 }

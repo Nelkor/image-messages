@@ -13,3 +13,6 @@ export const setImageData = (imageData: ImageData): void => {
 
   ctx.putImageData(imageData, 0, 0)
 }
+
+export const getResultImageData = (): ImageData =>
+  ctx.getImageData(0, 0, canvas.width, canvas.height)

@@ -1,10 +1,13 @@
 import { getText } from './textarea'
-import { getImageData } from './pattern-image'
+import { getPatternImageData } from './pattern-image'
 import { setImageData } from './result-image'
-import { getRandomIndexes, codeToDifference, modifyRgbByDiff } from './utils'
-
-const VALUES_BY_PIXEL = 4
-const PIXELS_FOR_LETTER = 6
+import {
+  getRandomIndexes,
+  codeToDifference,
+  modifyRgbByDiff,
+  VALUES_BY_PIXEL,
+  PIXELS_FOR_LETTER,
+} from './utils'
 
 const writeButton = document.querySelector('button#write')
 
@@ -14,7 +17,7 @@ if (!writeButton) {
 
 const onClick = () => {
   const text = getText()
-  const imageData = getImageData()
+  const imageData = getPatternImageData()
   const { data } = imageData
 
   const lettersAmount = Math.floor(
