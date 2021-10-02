@@ -95,3 +95,38 @@ export const listenToInputImage = (id: string, drawImage: DrawImage): void => {
 
   input.addEventListener('change', onInputChange)
 }
+
+const incUint8 = (data: Uint8ClampedArray, index: number) => {
+  data[index] += data[index] == 255 ? -2 : 1
+}
+
+const decUint8 = (data: Uint8ClampedArray, index: number) => {
+  data[index] -= data[index] == 0 ? -2 : 1
+}
+
+export const modifyRgbByDiff = (
+  data: Uint8ClampedArray,
+  start: number,
+  diff: number
+): void => {
+  switch (diff) {
+    case 1:
+      incUint8(data, start)
+      break
+    case 2:
+      decUint8(data, start)
+      break
+    case 3:
+      incUint8(data, start + 1)
+      break
+    case 4:
+      decUint8(data, start + 1)
+      break
+    case 5:
+      incUint8(data, start + 2)
+      break
+    case 6:
+      decUint8(data, start + 2)
+      break
+  }
+}

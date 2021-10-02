@@ -1,8 +1,8 @@
 import { listenToInputImage } from './utils'
 import { drawImage as drawToPatternCanvas } from './pattern-image'
-import { drawImage as drawToSteganographyCanvas } from './steganography-image'
+import { drawImage as drawToSteganographyCanvas } from './result-image'
 
-export const startListening = (): void => {
+export const startListeningFiles = (): void => {
   listenToInputImage('pattern-uploading', drawToPatternCanvas)
   listenToInputImage('steganography-uploading', drawToSteganographyCanvas)
 }

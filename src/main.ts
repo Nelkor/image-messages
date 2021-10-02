@@ -1,5 +1,7 @@
-import { startListening } from '@/app/files-uploading'
+import { startListeningFiles } from '@/app/files-uploading'
+import { startListeningWrite } from '@/app/write'
 
 import '@/main.scss'
 
-startListening()
+startListeningFiles()
+startListeningWrite()
